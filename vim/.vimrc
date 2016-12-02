@@ -22,6 +22,10 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+" line numbers... (the two options interact)
+" both set means show absolute on current line, relative for the rest.
+set number          " absolute numbers
+set relativenumber  " relative numbers
 " Coding tidbits...
 set autoindent
 set textwidth=80
@@ -37,8 +41,8 @@ set wildmenu
 " File Browsing feature... (netrw, the built-in plugin)
 " Tweaks
 "let g:netrw_banner=0        " disable the banner thing.
-let g:netrw_browse_split=4  " open in prior window.
-let g:netrw_altv=1          " open splits to the right.
+let g:netrw_browse_split=4  " open file window behaviour (prior window)
+let g:netrw_altv=1          " open file split behaviour (horizontal)
 let g:netrw_liststyle=3     " tree view!
 "let g:netrw_list_hide=netrw_gitignore#Hide()
 "let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
