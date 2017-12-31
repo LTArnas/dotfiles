@@ -1,2 +1,3 @@
-# Emacs generated temp files.
+# Emacs files
 .*~
+*/.emacs.d/elpa/
