@@ -1,0 +1,39 @@
+# Global config
+[user]
+    name = "Arnoldas Rudzevicius"
+    email = arnoldas.rudz@gmail.com
+
+[core]
+    editor = vim
+    autocrlf = input
+    fscache = true
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = true
+
+[help]
+    format = html
+
+[rebase]
+    autosquash = true
+
+# Load partial gitconfigs based on where we are/what we are doing:
+
+# Want Base work gitconfig?
+#[includeIf "gitdir:~/dev/work/"]
+#	path = ~/dev/work/.gitconfig
+
+# Work-specific
+[includeIf "gitdir:~/dev/work/ir/"]
+	path = ~/dev/work/ir/.gitconfig
+
+# ...Global IS personal.
+# Personal
+#[includeIf "gitdir:~/dev/personal/"]
+#	path = ~/dev/personal/.gitconfig
+
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret

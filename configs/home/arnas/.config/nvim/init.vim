@@ -1,66 +1,48 @@
 " Dein.vim
+" ...deing is not installed currently, so commented out.
+" ...but some of these we want to have anyway.
 if &compatible
   set nocompatible               " Be iMproved
 endif
 
 " Required:
-set runtimepath+=/home/arnas/.vim/dein/repos/github.com/Shougo/dein.vim
+"set runtimepath+=/home/arnas/.vim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/home/arnas/.vim/dein')
-  call dein#begin('/home/arnas/.vim/dein')
+"if dein#load_state('/home/arnas/.vim/dein')
+"  call dein#begin('/home/arnas/.vim/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/home/arnas/.vim/dein/repos/github.com/Shougo/dein.vim')
+"  call dein#add('/home/arnas/.vim/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
-  call dein#add('altercation/vim-colors-solarized')
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('junegunn/limelight.vim')
+"  call dein#add('altercation/vim-colors-solarized')
+"  call dein#add('itchyny/lightline.vim')
+"  call dein#add('junegunn/limelight.vim')
   " Required:
-  call dein#end()
-  call dein#save_state()
-endif
+"  call dein#end()
+"  call dein#save_state()
+"endif
 
 " Required:
 filetype plugin indent on
 syntax enable
 
 " If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
+"if dein#check_install()
+"  call dein#install()
+"endif
 " End of Deing.vim ------------------------------------------------------------
-
-" lightline.vim
-set noshowmode 
-let g:lightline = {
-            \ 'colorscheme': 'solarized',
-            \ }
-" End of lightline.vim --------------------------------------------------------
-
-" limelight.vim
-" Turn it on at startup...
-"autocmd VimEnter * Limelight
-" End of limelight.vim --------------------------------------------------------
 
 " Other config/my own stuff...
 "
 
-" Ripped from somehwere, when trying to make 24-bit bash on windows work
-if &term =~ '256color'
-    " The following two lines solve the BCE issue described here:
-    " https://sanaku.github.io/vim-256colo-bce.html
-    set term=screen-256color
-    set t_ut=
-endif
+" Fck the escape key.
+:inoremap jj <Esc>
 
 set background=dark
-" Suggested setting for solarized under 256 colors ...not what we want though.
-" ...We want full experience. (24-bit colors)
-let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme default
 " Tabs are spaces!...
 set expandtab
 set tabstop=4
