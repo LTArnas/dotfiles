@@ -27,10 +27,10 @@
 #	path = ~/dev/work/.gitconfig
 
 # Work-specific
-[includeIf "gitdir:~/dev/work/ir/"]
+[includeIf "gitdir:~/dev/work/ir/**"]
 	path = ~/dev/work/ir/.gitconfig
 
-# ...Global IS personal.
+# ...Global IS personal, so this isn't needed.
 # Personal
 #[includeIf "gitdir:~/dev/personal/"]
 #	path = ~/dev/personal/.gitconfig
