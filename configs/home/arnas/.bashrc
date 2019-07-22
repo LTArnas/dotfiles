@@ -116,12 +116,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# pyenv
-if [ -d "$HOME/.pyenv" ]; then
-  if [ -d "$HOME/.pyenv/bin" ]; then
-    export PATH="$HOME/.pyenv/bin:$PATH"
+# pyenv and pipenv
+export PYENV_ROOT="$HOME/.pyenv"
+if [ -d "$PYENV_ROOT" ]; then
+  if [ -d "$PYENV_ROOT/bin" ]; then
+    export PATH="$PYENV_ROOT/bin:$PATH"
   else
-    export PATH="$HOME/.pyenv/shims:$PATH"
+    export PATH="$PYENV_ROOT/shims:$PATH"
   fi
   if command -v pyenv >/dev/null 2>&1; then
     eval "$(pyenv init -)"
@@ -129,5 +130,6 @@ if [ -d "$HOME/.pyenv" ]; then
     # Not sure it's applicable when we have pipenv...
     # (But it sounds great and we should use it, if the two don't clash.)
     #eval "$(pyenv virtualenv-init -)"
+    export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
   fi
 fi
