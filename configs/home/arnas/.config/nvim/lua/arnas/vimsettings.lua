@@ -13,12 +13,12 @@ vim.opt.autowrite = false
 vim.opt.autowriteall = false
 vim.opt.background = "dark"
 vim.opt.backup = false
-vim.opt.backupdir:append { ".", "$XDG_STATE_HOME/nvim/backup//" }
+--vim.opt.backupdir:append { ".", "$XDG_STATE_HOME/nvim/backup//" }
 vim.opt.backupext = "~"
 --vim.opt.backupskip -- we not changing the default, since it's different on different platforms.
 vim.opt.confirm = true
 vim.opt.cursorline = true
-vim.opt.directory:append { "$XDG_STATE_HOME/nvim/swap//" }
+--vim.opt.directory:append { "$XDG_STATE_HOME/nvim/swap//" }
 vim.opt.fixendofline = false
 vim.opt.scrolloff = 5
 vim.opt.shiftwidth = 4
