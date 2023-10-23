@@ -28,30 +28,39 @@ return {
             require('lspconfig').lua_ls.setup(lua_opts)
           end,
           ["pyright"] = function()
-              local util = require("lspconfig/util")
-              local path = util.path
               local function get_python_path(workspace)
+                  -- OMFG so on windows python.exe is in Scripts dir, on unix there's a bin dir. fuck me
+                  local pyExeDir = "bin" -- default to unix location
+                  if vim.loop.os_uname()["sysname"] == "Windows_NT" then
+                      pyExeDir = "Scripts"
+                  end
+                  local fs = vim.fs
+                  -- currently, lua vim doesn't expose path join
+                  local joinpath = require('lspconfig/util').path.join
+
                   -- Use activated venv.
                   if vim.env.VIRTUAL_ENV then
-                      return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
+                      vim.print("virtual env activation!")
+                      return fs.normalize(joinpath(vim.env.VIRTUAL_ENV, pyExeDir, "python"))
                   end
 
                   -- Find and use virtualenv in workspace directory.
-                  --[[
                   for _, pattern in ipairs({'*', '.*'}) do
-                    local match = vim.fn.glob(path.join(workspace, pattern, 'pyvenv.cfg'))
+                    local match = vim.fn.glob(fs.normalize(joinpath(workspace, pattern, 'pyvenv.cfg')))
                     if match ~= '' then
-                      return path.join(path.dirname(match), 'bin', 'python')
+                      vim.print("found activation!")
+                      vim.print(fs.normalize(joinpath(fs.dirname(match), pyExeDir, 'python')))
+                      return fs.normalize(joinpath(fs.dirname(match), pyExeDir, 'python'))
                     end
                   end
-                  --]]
 
                   -- Fallback to system Python.
-                  return exepath('python3') or exepath('python') or 'python'
+                  vim.print("Fallback activation!")
+                  return vim.uv.exepath('python3') or vim.uv.exepath('python') or 'python'
               end
               require("lspconfig").pyright.setup({
                   before_init = function(_, config)
-                      config.settings.python.pythonPath = get_python_path(config.root_dir)
+                      config.settings.python.pythonPath = get_python_path(vim.loop.cwd())
                   end,
               })
           end,
