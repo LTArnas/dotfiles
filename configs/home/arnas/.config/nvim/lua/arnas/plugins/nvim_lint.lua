@@ -2,7 +2,6 @@ return {
     "mfussenegger/nvim-lint",
     event = { "BufReadPost" },
     config = function()
-        local vim = require("vim")
         -- Declare linters
         local lint = require("lint")
 
