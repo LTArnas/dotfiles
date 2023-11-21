@@ -54,9 +54,12 @@ return {
             if vim.fn.matchend(foundLaunchPath, "launch.json$", nil, 1) == -1 then
                 foundLaunchPath = vim.fs.normalize(foundLaunchPath .. "/launch.json")
             end
+            vim.print("Found launch.json!")
             -- finally, add custom config to the list
             -- Note! this overwrites the config list if the name is the same! ...i think it's on the name
             require("dap.ext.vscode").load_launchjs(foundLaunchPath)
+        else
+            vim.print("Did not find launch.json for python debugging.")
         end
     end,
 }

@@ -1,5 +1,8 @@
 return {
     "mfussenegger/nvim-dap",
+    dependencies = {
+        "theHamsta/nvim-dap-virtual-text",
+    },
     config = function()
         require("dap").defaults.fallback.exception_breakpoints = { "uncaught" }
 
